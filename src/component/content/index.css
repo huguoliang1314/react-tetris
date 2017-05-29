@@ -2,8 +2,25 @@
 	text-align: center;
 }
 
+.tetris-bg {
+	width: 400px;
+	margin: 0 auto;
+}
+
+.tetris-table {
+	border-top: 1px solid red;
+	border-right: 1px solid red;
+}
+
 .square {
-	height: 50px;
-	width: 50px;
-	background-color: red;
+	height: 40px;
+	width: 40px;
+	background-color: #fff;
+	border: 1px solid red;
+	border-top: 0;
+	border-right: 0;
+}
+
+.i-active {
+	background-color: #1BD1A5;
 }
