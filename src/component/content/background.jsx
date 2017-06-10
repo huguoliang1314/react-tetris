@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import GetTetromino from './getTetromino.jsx';
+import Tetromino from './Tetromino.jsx';
 
 export default class Background extends React.Component {
   render() {
@@ -29,6 +29,7 @@ export default class Background extends React.Component {
             {listItems}
           </tbody>
         </table>
+        <Tetromino />
       </div>
     );
   }
