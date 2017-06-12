@@ -13,14 +13,13 @@ export default class Tetromino extends React.Component {
 
   componentDidMount(){
     const arr = ['S','Z','L','J','I','O','T'];
+    const name = arr.map(v => v.toLocaleLowerCase() + '-active');
 
     this.timerId = setInterval(()=>{
       let index = Math.floor(Math.random()*arr.length);
 
-      // this.setState({
-      //   tetromino: arr[index]
-      // });
-      this.renderInitTetro(arr[index]);
+      this.moveTetro(name[index], arr[index]);
+      // this.renderInitTetro(arr[index]);
     },5000);
   }
 
@@ -53,26 +52,49 @@ export default class Tetromino extends React.Component {
       case 't':
         position.push(i, i+9, i+10, i+11);
         break;
-      default:
+      // default:
         // this.addClass('s-active');
 
     }
+
+    return position;
   }
 
   addClass(name, selector){
-    // const sel = selector || 'square';
-    const elem;
-    Array.isArray(selector) && Array.from(selector, i => elem =document.getElementsByClassName('square')[i]);
-    let className = elem.className;
+    let elem;
+    Array.isArray(selector) && Array.from(selector, function(i){
+      elem = document.getElementsByClassName('square')[i];
+      let className = elem.className;
 
-    elem.className = className + ' ' +  name;
+      if (/\b-active\b/.test(className)) {
+          className = 'square'
+      }
+
+      elem.className = className + ' ' + name;      
+    });
+  }
+
+  removeClass(){
+    let selector = document.getElementsByClassName('square');
+
+    Array.from(selector, function(i){
+      let elem = document.getElementsByClassName('square')[i];
+      
+      let className = elem.className;
+
+      if (/\b-active\b/.test(className)) {
+          className = 'square'
+      }
+    })
   }
 
   moveTetro(name, type){
+    let i = 4;
     let tetrominoId = setTimeout(() => {
-      let elem = this.countSharpe(type);
-      this.addClass(name, elem);
-    },1000)
+      let posArr = this.countSharpe(type,i);
+      this.removeClass();
+      this.addClass(name, posArr);
+    },2000)
   }
 
   render() {

@@ -26,6 +26,30 @@
 	background-color: #1BD1A5;
 }
 
+.z-active {
+    background-color: #bed5d6;
+}
+
+.s-active {
+    background-color: #b8ac9e;
+}
+
+.l-active {
+    background-color: #8f867b;
+}
+
+.j-active {
+    background-color: #f08080;
+}
+
+.t-active {
+    background-color: #0080ff;
+}
+
+.o-active {
+    background-color: #ffff99;
+}
+
 .overlay-content {
     position: fixed;
     top: 0;
